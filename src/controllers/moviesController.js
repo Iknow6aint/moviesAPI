@@ -29,20 +29,38 @@ const getMovies = asyncHandler(async (req, res) => {
 
 
 const updateMovies = asyncHandler(async (req, res) => {
-    const { id } = req.params
+    const id = req.params
     validateMongoDbId(id)
+
     try {
-        const updatedMovie = await Movie.findOneAndUpdate({ id }, req.body, {
+        const updatedMovie = await Movie.findOneAndUpdate({ _id: id }, req.body, {
             new: true,
         });
+
         res.json(updatedMovie)
     } catch (error) {
-        throw new error
+        throw new Error(error)
+    }
+})
+const deleteMovies = asyncHandler(async (req, res) => {
+    const id = req.params
+    validateMongoDbId(id)
+    console.log(id);
+    try {
+        const deletedMovie = await Movie.findOneAndDelete({ _id: id }, req.body, {
+            new: true,
+        });
+
+        res.json(deletedMovie)
+    } catch (error) {
+        throw new Error(error)
     }
 })
 
 module.exports = {
     createMovie,
     getMovies,
+    updateMovies,
+    deleteMovies,
 }
 
