@@ -1,21 +1,25 @@
 {
-  "name": "movies-api-test",
-  "version": "1.0.0",
-  "description": "",
-  "main": "index.js",
-  "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1"
-  },
-  "keywords": [],
-  "author": "",
-  "license": "ISC",
-  "dependencies": {
-    "express": "^4.18.2",
-    "mongoose": "^7.1.1",
-    "morgan": "^1.10.0",
-    "nodemon": "^2.0.22"
-  },
-  "devDependencies": {
-    "jest": "^29.5.0"
-  }
+    "name": "movies-api-test",
+    "version": "1.0.0",
+    "description": "",
+    "main": "index.js",
+    "scripts": {
+        "dev": "nodemon server.js",
+        "test": "echo \"Error: no test specified\" && exit 1"
+    },
+    "keywords": [],
+    "author": "",
+    "license": "ISC",
+    "dependencies": {
+        "body-parser": "^1.20.2",
+        "express": "^4.18.2",
+        "express-async-handler": "^1.2.0",
+        "mongoose": "^7.1.1",
+        "morgan": "^1.10.0",
+        "nodemon": "^2.0.22",
+        "slugify": "^1.6.6"
+    },
+    "devDependencies": {
+        "jest": "^29.5.0"
+    }
 }
