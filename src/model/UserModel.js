@@ -1,16 +1,17 @@
 const { default: mongoose } = require("mongoose");
 
-const MoviesModel = require('./MoviesModel');
+const Movies = require('./MoviesModel');
 
 var userSchema = new mongoose.Schema({
     name: {
         type: String,
     },
-    movie: {
-        type: mongoose.Schema.Types.ObjectId,
-        ref: "Movie"
-    },
-    movieRankings: [{}, {}, {}, {}, {}, {}, {}, {}, {}, {},]
+    movies: {
+        type: Array,
+        default: [],
+        ref: Movies
+    }
+
 })
 
 module.exports = mongoose.model('User', userSchema)

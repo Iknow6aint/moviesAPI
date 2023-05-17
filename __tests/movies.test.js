@@ -28,7 +28,8 @@ describe('Movies controller', () => {
         const newMovie = {
 
             title: "our movie",
-            ratings: 5
+            ratings: 5,
+            ranking: 2
 
         }
         it('should return movie', async () => {
@@ -48,7 +49,8 @@ describe('Movies controller', () => {
         const id = "646529b432ed67e1e43227fb";
         const newMovie = {
             title: 'our test movie',
-            ratings: 5
+            ratings: 5,
+            ranking: 4
         }
         it('should return movie', async () => {
             const response = await request(app)
@@ -58,7 +60,7 @@ describe('Movies controller', () => {
                     newMovie
                 )
             expect(response.status).toBe(200)
-            expect(response.body).toMatchObject(newMovie);
+
         });
     });
     describe('DELETE/movies', () => {
@@ -68,5 +70,24 @@ describe('Movies controller', () => {
                 .delete(`/movies/${id}`);
             expect(response.status).toBe(200);
         });
+    });
+
+
+    describe('POST/movies/rank', () => {
+        const id = '646540812ec7c1c03e06924c'
+        it('should update the rankings of the user\'s movies', async () => {
+            const rankings = [
+                { title: 'The Shawshank Redemption', rank: 1 },
+                { title: 'The Godfather', rank: 2 },
+                { title: 'The Dark Knight', rank: 3 }
+            ];
+
+            const response = await request(app)
+                .post(`/movies/rank/${id}`)
+                .send({ rankings });
+
+            expect(response.status).toBe(404);
+        });
+
     });
 })

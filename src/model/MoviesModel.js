@@ -8,6 +8,10 @@ var movieSchema = new mongoose.Schema({
     ratings: {
         type: Number,
         required: true,
+    },
+    ranking: {
+        type: Number,
+        required: true
     }
 })
 
