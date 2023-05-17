@@ -9,8 +9,8 @@ var userSchema = new mongoose.Schema({
     movie: {
         type: mongoose.Schema.Types.ObjectId,
         ref: "Movie"
-    }
-
+    },
+    movieRankings: [{}, {}, {}, {}, {}, {}, {}, {}, {}, {},]
 })
 
 module.exports = mongoose.model('User', userSchema)

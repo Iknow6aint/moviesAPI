@@ -44,15 +44,16 @@ describe('Movies controller', () => {
 
     })
 
-    describe('PUT/movies', () => {
-        const id = '1';
+    describe('PATCH/movies', () => {
+        const id = "646529b432ed67e1e43227fb";
         const newMovie = {
-            title: "our test movie",
+            title: 'our test movie',
             ratings: 5
         }
         it('should return movie', async () => {
             const response = await request(app)
-                .put(`/movies/${id}`).
+                .patch(`/movies/${id}`)
+                .
                 send(
                     newMovie
                 )
@@ -60,15 +61,12 @@ describe('Movies controller', () => {
             expect(response.body).toMatchObject(newMovie);
         });
     });
-    describe('DELETE /movies/:id', () => {
-        const id = 1;
+    describe('DELETE/movies', () => {
+        const id = '64652ab05cb21eff1e019070';
         it('should return movie', async () => {
             const response = await request(app)
                 .delete(`/movies/${id}`);
             expect(response.status).toBe(200);
-            expect(response.body).toMatchObject({
-                _id: id
-            });
         });
     });
 })

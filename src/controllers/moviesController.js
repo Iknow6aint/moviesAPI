@@ -30,11 +30,10 @@ const getMovies = asyncHandler(async (req, res) => {
 
 
 const updateMovies = asyncHandler(async (req, res) => {
-    const id = req.params
-    validateMongoDbId(id)
-
+    const { id } = req.params;
+    const { title, ratings } = req.body;
     try {
-        const updatedMovie = await Movie.findOneAndUpdate({ _id: id }, req.body, {
+        const updatedMovie = await Movie.findOneAndUpdate({ _id: id }, { title, ratings }, {
             new: true,
         });
 
