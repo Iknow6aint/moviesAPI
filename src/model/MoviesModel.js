@@ -5,7 +5,7 @@ var movieSchema = new mongoose.Schema({
         type: String,
         required: true,
     },
-    rattings: {
+    ratings: {
         type: Number,
         required: true,
     }

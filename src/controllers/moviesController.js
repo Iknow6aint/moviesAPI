@@ -12,6 +12,7 @@ const createMovie = asyncHandler(async (req, res) => {
         }
 
         const newMovie = await Movie.create(req.body);
+        res.status(200)
         res.json(newMovie)
     } catch (error) {
         throw new Error(error)
@@ -43,13 +44,11 @@ const updateMovies = asyncHandler(async (req, res) => {
     }
 })
 const deleteMovies = asyncHandler(async (req, res) => {
-    const id = req.params
+    const { id } = req.params;
     validateMongoDbId(id)
     console.log(id);
     try {
-        const deletedMovie = await Movie.findOneAndDelete({ _id: id }, req.body, {
-            new: true,
-        });
+        const deletedMovie = await Movie.findOneAndDelete({ _id: id });
 
         res.json(deletedMovie)
     } catch (error) {
