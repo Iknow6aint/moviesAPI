@@ -9,6 +9,9 @@ const app = express()
 app.use(bodyParser.json())
 app.use(morgan('combined'))
 app.use('/movies', moviesRouter)
+app.get('/', (req, res) => {
+    res.send('hello world')
+})
 
 
 module.exports = app;
